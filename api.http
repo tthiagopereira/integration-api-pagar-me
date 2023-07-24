@@ -1,0 +1,68 @@
+#⁃ Endpoints:
+#    ⁃ [X] Criação do recebedor
+#    ⁃ [X] Criação cartões
+#    ⁃ [X] Listar cartões
+#    ⁃ [X] Criação checks in
+#    ⁃ [X] Consulta de saldo do recebedor
+#    ⁃ [] Webhook de status dos pagamentos
+#⁃ Serviços:
+# ⁃ Antecipação do recebíveis
+
+#headers: {
+#'encription_key': 'encription_key',
+#'api_key': 'api_key',
+#'Authorization': `Basic ${digestString}`
+#}
+###
+POST http://localhost:3000/pagarme/recipients
+Content-Type: application/json
+
+{
+    "anticipatable_volume_percentage": "85",
+    "api_key": "api_key",
+    "automatic_anticipation_enabled": "true",
+    "bank_account": {
+    		"bank_code": "341",
+        "agencia": "0932",
+        "agencia_dv": "5",
+        "conta": "58054",
+        "type": "conta_corrente",
+        "conta_dv": "1",
+        "document_number": "26268738888",
+        "legal_name": "API BANK ACCOUNT"
+    },
+    "transfer_day": "5",
+    "transfer_enabled": "true",
+    "transfer_interval": "weekly",
+    "postback_url": "https://requestb.in/tl0092tl"
+}
+
+###
+POST http://localhost:3000/pagarme/cards
+Content-Type: application/json0
+
+
+{
+  "api_key": "api_key",
+  "card_expiration_date": "1122",
+  "card_number": "4018720572598048",
+  "card_cvv": "123",
+  "card_holder_name": "Aardvark Silva"
+}
+
+###
+GET http://localhost:3000/pagarme/cards
+Content-Type: application/json
+
+{
+  "api_key": "api_key",
+  "count": "3"
+}
+
+###
+GET http://localhost:3000/pagarme/cards
+Content-Type: application/json
+
+{
+  "api_key": "api_key"
+}
